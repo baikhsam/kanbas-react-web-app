@@ -206,18 +206,6 @@ p#id-selector-2 {
 	float: left;
 }
 
-.wd-flex-row-container .bg-color-yellow {
-   background-color: #ffff07;
-}
-
-.wd-flex-row-container .bg-color-blue {
-   background-color: #7070ff;
-}
-
-.wd-flex-row-container .bg-color-red {
-   background-color: #ff7070;
-}
-
 .wd-flex-row-container {
 	display: flex;
 	flex-direction: row;
