@@ -1,8 +1,6 @@
 .wd-acc-container {
 	width: 100%;
 	margin-right: 10px;
-	/* display: flex;
-    flex-direction: row; */
 }
 
 .wd-acc-header {
@@ -75,12 +73,12 @@
 	display: flex;
 	flex-direction: row;
 	margin: 15px;
-	justify-content: center;
 }
 
 .wd-acc-profile-content-center {
 	display: flex;
 	flex-direction: row;
+	margin-left: 25px;
 }
 
 .wd-acc-profile-edit .btn {

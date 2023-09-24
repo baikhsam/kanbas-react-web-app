@@ -1,0 +1,56 @@
+.wd-acc-profile-info-name {
+	display: flex;
+	flex-direction: column;
+}
+
+.wd-acc-profile-info-name * {
+	margin: 5px;
+}
+
+.row.wd-grid-header {
+	font-weight: bold;
+}
+
+.btn {
+	background-color: #f5f5f5;
+	color: #2d3b45;
+	margin-bottom: 0px;
+}
+
+#wd-btn-save {
+	background-color: red;
+	color: white;
+}
+
+.wd-acc-profile-links .container .row,
+.wd-acc-profile-links .container .col {
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 0;
+}
+
+.wd-acc-profile-links-add,
+.col-1 {
+	margin-top: 0;
+	margin-bottom: 0px;
+	padding-left: 0;
+}
+
+.wd-arrow {
+	/* margin: 0; */
+	margin-top: 15px;
+	padding: 0;
+}
+
+.wd-acc-profile-buttons {
+    margin: 0;
+}
+
+#wd-btn-save, #wd-btn-cancel {
+    margin: 0;
+    margin-right: 5px;
+}
+
+.wd-acc-profile-info-name label {
+    font-weight: bold;
+}

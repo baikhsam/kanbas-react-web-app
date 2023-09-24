@@ -1,3 +1,10 @@
+.kb-flex-row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
 .wd-navigation {
     list-style: none;
 	background-color: black;
@@ -7,7 +14,7 @@
 	margin: 0;
 	padding: 0;
     height: 100%;
-    position: sticky;
+    overflow-y: auto;
 }
 
 .wd-navigation li {
