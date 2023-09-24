@@ -1,69 +1,151 @@
-<table width="100%">
-    <tr>
-        <!-- Kanbas Nav -->
-        <td valign="top">
-            <ul>
-                <li><a href="/Kanbas/Account/Profile/screen.html">Account</a></li>
-                <li><a href="/Kanbas/Dashboard/screen.html">Dashboard</a></li>
-                <li><a href="/Kanbas/Courses/Home/screen.html">Courses</a></li>
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Inbox</a></li>
-                <li><a href="#">History</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Commons</a></li>
-                <li><a href="#">Help</a></li>
-            </ul>
-        </td>
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Account Nav -->
-        <td valign="top">
-            <ul>
-                <li><a href="#">Notifications</a></li>
-                <li><a href="/Kanbas/Account/Profile/screen.html">Profile</a></li>
-                <li><a href="#">Files</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">ePortfolios</a></li>
-                <li><a href="#">Shared Content</a></li>
-                <li><a href="#">The Hub</a></li>
-                <li><a href="#">Qwickly Course Tools</a></li>
-                <li><a href="#">Global Announcements</a></li>
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/Kanbas/KanbasNavigation/index.css" rel="stylesheet" />
+    <link href="/Kanbas/Account/index.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="kb-flex-row-container">
+        <div>
+            <ul class="wd-navigation">
+                <img src="/images/neu.png" alt="Northeastern University Logo" class="logo" />
+                <li class="wd-active">
+                    <a href="/Kanbas/Account/Profile/screen.html">
+                        <i class="fa-solid fa-user fa-xl" style="color: grey;"></i>
+                        <br>
+                        Account
+                    </a>
+                </li>
+                <li>
+                    <a href="/Kanbas/Dashboard/screen.html">
+                        <i class="fa-solid fa-gauge fa-xl"></i>
+                        <br>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/Kanbas/Courses/Home/screen.html">
+                        <i class="fa-solid fa-book fa-xl"></i>
+                        <br>
+                        Courses
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-calendar-days fa-xl"></i>
+                        <br>
+                        Calendar
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-envelope fa-xl"></i>
+                        <br>
+                        Inbox
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-clock fa-xl"></i>
+                        <br>
+                        History
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-circle-play fa-xl"></i>
+                        <br>
+                        Studio
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-arrow-right-to-bracket fa-xl"></i>
+                        <br>
+                        Commons
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-question fa-xl"></i>
+                        <br>
+                        Help
+                    </a>
+                </li>
             </ul>
-        </td>
-        <!-- Profile -->
-        <td valign="top">
-            <p>Sam Baik's Profile</p>
+        </div>
+
+
+
+        <div class="wd-acc-container">
+            <div class="wd-acc-header">
+                <i class="fa-solid fa-bars fa-xl"></i>
+                <span class="user">Sam Baik's Profile</span>
+            </div>
             <hr>
-            <table width="100%">
-                <tr>
-                    <td>
-                        <h2>Sam Baik</h2>
-                    </td>
-                    <td>
-                        <form action="/Kanbas/Account/Profile/Edit/screen.html">
-                            <button>Edit Profile</button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Contact</h3>
 
-                        <p>No registered services, you can add some on the <a href="#">settings</a> page</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Biography</h3>
-                        <p>Student, Software Engineer, HTML Enjoyer</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3>Links</h3>
-                        <a href="#">LinkedIn</a>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+            <div class="wd-acc-profile-content-block">
+                <div class="wd-acc-profile-content-left">
+                    <ul class="wd-acc-navigation">
+                        <li><a href="#">Notifications</a></li>
+                        <li class="active"><a href="/Kanbas/Account/Profile/screen.html">Profile</a></li>
+                        <li><a href="#">Files</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">ePortfolios</a></li>
+                        <li><a href="#">Shared Content</a></li>
+                        <li><a href="#">The Hub</a></li>
+                        <li><a href="#">Qwickly Course Tools</a></li>
+                        <li><a href="#">Global Announcements</a></li>
+                    </ul>
+                </div>
+
+                <div class="wd-acc-profile-content-center">
+                    <div class="wd-acc-profile">
+                        <div class="wd-acc-profile-image">
+                            <i class="fa-solid fa-user fa-8x"></i>
+                        </div>
+                        <div class="wd-acc-profile-info">
+                            <h2>Sam Baik</h2>
+                            <div class="wd-acc-profile-contact">
+                                <h3>Contact</h3>
+                                <p>No registered services, you can add some on the <a href="#">settings</a> page</p>
+                            </div>
+                            <div class="wd-acc-profile-bio">
+                                <h3>Biography</h3>
+                                <p>Student, Software Engineer, HTML Enjoyer</p>
+                            </div>
+                            <div class="wd-acc-profile-links">
+                                <h3>Links</h3>
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-link"></i>
+                                        <a href="https://www.youtube.com/@WebDevTV/">YouTube</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wd-acc-profile-content-right">
+                    <form class="wd-acc-profile-edit" action="/Kanbas/Account/Profile/Edit/screen.html">
+                        <button class="btn btn-secondary btn-sm"><i
+                                class="fa-solid fa-pencil fa-flip-horizontal fa-xs"></i>
+                            Edit
+                            Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+.wd-navigation {
+    list-style: none;
+	background-color: black;
+	min-width: 75px;
+	max-width: 85px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+    height: 100%;
+    position: sticky;
+}
+
+.wd-navigation li {
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.wd-navigation li a {
+    color: white;
+    text-decoration: none;
+}
+
+.wd-navigation .logo {
+	width: 70px;
+}
+
+.wd-navigation a i {
+	color: red;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.wd-navigation li.wd-active {
+	background-color: white;
+}
+
+.wd-navigation li.wd-active a {
+	color: red;
+}
