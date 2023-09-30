@@ -1,0 +1,113 @@
+.wd-courses-container, .wd-module {
+	width: 100%;
+}
+
+.wd-courses-content-block {
+	display: flex;
+	flex-direction: row;
+}
+
+.wd-courses-content-left {
+	flex-shrink: 0;
+}
+
+.wd-module {
+	margin-left: 40px;
+	/* flex-grow: 1; */
+}
+
+.wd-acc-header,
+.wd-acc-header > nav,
+.wd-acc-header > i {
+	display: inline-flex;
+	flex-direction: row;
+}
+
+.wd-acc-header i {
+	margin: 25px;
+}
+
+.wd-acc-header > nav {
+	margin-top: 15px;
+}
+
+.wd-module .list-group,
+.wd-todo .list-group {
+	border-radius: 0;
+}
+
+.list-group-item {
+	overflow-wrap: break-word;
+}
+
+.fa-ellipsis-vertical,
+.fa-circle-check,
+.fa-plus {
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 0;
+}
+
+.list-group-item .fa-circle-check {
+	color: green;
+}
+
+.wd-module a,
+.wd-todo a,
+.wd-events a,
+.wd-acc-header a {
+	color: red;
+	text-decoration: none;
+	font-weight: lighter;
+}
+
+.wd-btn-unpublish {
+	/* margin-top: 5px; */
+	background-color: #f5f5f5;
+	color: black;
+}
+
+.wd-btn-published {
+	/* margin-top: 5px; */
+	background-color: green;
+}
+
+.wd-publish {
+	width: 100%;
+}
+
+.wd-status-button-grid button {
+	background-color: #f5f5f5;
+	color: black;
+}
+
+.wd-todo .list-group-item,
+.wd-events .list-group-item {
+	border: 0;
+}
+
+.wd-todo i {
+	color: red;
+}
+
+.wd-module-header-settings i {
+    text-align: center;
+    padding-left: 0;
+}
+
+/* Assignments */
+.wd-assignments {
+    width: 100%;
+}
+
+.wd-acc-header i {
+    margin: 0;
+}
+
+.wd-assignments-list .list-group {
+    border-radius: 0;
+}
+
+.wd-right-icons {
+    margin-left: auto;
+}

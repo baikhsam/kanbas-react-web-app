@@ -1,0 +1,29 @@
+.wd-course-navigation-mobile a {
+	color: red;
+	text-decoration: none;
+}
+
+.wd-course-navigation-mobile-header {
+	background-color: black;
+	width: 100%;
+	height: 75px;
+	display: flex;
+    flex-direction: row;
+}
+
+.wd-course-navigation-mobile-header i {
+	color: white;
+}
+
+.wd-course-module-title, .wd-course-module-title a {
+    color: white;
+    /* padding-top: 5px; */
+}
+
+.wd-course-navigation-mobile i {
+    color: red;
+}
+
+.wd-course-navigation-mobile li {
+    margin: 5px;
+}

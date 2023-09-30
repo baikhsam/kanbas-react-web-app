@@ -1,0 +1,31 @@
+.wd-navigation-mobile {
+    width: 100%;
+}
+
+.wd-navigation-mobile-x {
+    margin-right: 10px;
+    color: black;
+}
+
+.list-group-item {
+	padding: 0.5rem 1rem;
+	color: red;
+	text-decoration: none;
+	background-color: #fff;
+	border: 0
+}
+
+.list-group-item i {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.list-group-item:hover {
+	text-decoration: none;
+	color: red;
+	background-color: #fff;
+}
+
+.wd-navigation-mobile {
+	background-color: green;
+}
