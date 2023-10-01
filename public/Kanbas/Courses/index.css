@@ -150,32 +150,35 @@
 	font-size: 0.5rem;
 }
 
-/* .wd-grades table td {
-	position: relative;
+.wd-grades-student-name {
+	color: red !important;
 }
 
-.wd-grades td input {
-	position: absolute;
-	display: block;
-	top: 0;
-	left: 0;
-	margin: 0;
-	height: 100% !important;
-	width: 100%;
-	border-radius: 0 !important;
-	border: none;
-	padding: 10px;
-	box-sizing: border-box;
-} */
+/* Settings */
+.wd-settings a {
+	color: red;
+	text-decoration: none;
+}
 
-/* .wd-grades td button {
-    position: relative;
-	display:inline;
-	margin: 0;
-	padding: 10px;
-	box-sizing: border-box;
-} */
+#wd-settings-save {
+	color: #fff;
+	background-color: red;
+	border-color: red;
+	box-shadow: 0 0 0 0;
+}
 
-.wd-grades-student-name {
-    color: red !important;
+.wd-img-upload {
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 50px;
+	cursor: pointer;
+}
+
+.wd-img-upload span {
+    background-color: lightgrey;
+    padding: 10px;
+}
+
+.wd-settings-content input[type="file"] {
+    display: none;
 }
