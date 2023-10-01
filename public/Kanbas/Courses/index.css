@@ -1,4 +1,5 @@
-.wd-courses-container, .wd-module {
+.wd-courses-container,
+.wd-module {
 	width: 100%;
 }
 
@@ -91,23 +92,49 @@
 }
 
 .wd-module-header-settings i {
-    text-align: center;
-    padding-left: 0;
+	text-align: center;
+	padding-left: 0;
 }
 
 /* Assignments */
 .wd-assignments {
-    width: 100%;
+	width: 100%;
 }
 
 .wd-acc-header i {
-    margin: 0;
+	margin: 0;
 }
 
 .wd-assignments-list .list-group {
-    border-radius: 0;
+	border-radius: 0;
 }
 
 .wd-right-icons {
-    margin-left: auto;
+	margin-left: auto;
+}
+
+.wd-assignments-list a {
+	text-decoration: none;
+	color: black;
+}
+
+/** Assignments Editor **/
+.wd-assignments-editor-status {
+	color: green;
+}
+
+.wd-assignments-add {
+	border-radius: 0;
+}
+
+#wd-assignments-cancel {
+	color: black;
+	background-color: #f5f5f5;
+}
+
+#wd-assignments-save {
+	color: #fff;
+	background-color: red;
+	border-color: red;
+    box-shadow: 0 0 0 0;
 }
