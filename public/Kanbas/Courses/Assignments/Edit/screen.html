@@ -153,173 +153,169 @@
                     </div>
                     <hr>
                     <div class="wd-assignments-editor my-2">
-                        <form>
-                            <div class="mb-3">
-                                <label for="wd-assignments-name" class="form-label">Assignment Name</label>
-                                <input type="text" class="form-control" id="wd-assignments-name"
-                                    value="A1 - ENV + HTML">
+                        <div class="mb-3">
+                            <label for="wd-assignments-name" class="form-label">Assignment Name</label>
+                            <input type="text" class="form-control" id="wd-assignments-name" value="A1 - ENV + HTML">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="wd-assignment-description"
+                                rows="3">This is the assignment description.</textarea>
+                        </div>
+                        <div class="container">
+                            <div class="row my-3">
+                                <div class="col-3 text-end">
+                                    Points
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="wd-assignments-points" value="100">
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" id="wd-assignment-description"
-                                    rows="3">This is the assignment description.</textarea>
+                            <div class="row my-3">
+                                <div class="col-3 text-end">
+                                    Assignment Group
+                                </div>
+                                <div class="col-8">
+                                    <select class="form-select">
+                                        <option selected="selected" value="1">ASSIGNMENTS</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="container">
-                                <div class="row my-3">
-                                    <div class="col-3 text-end">
-                                        Points
-                                    </div>
-                                    <div class="col-8">
-                                        <input type="text" class="form-control" id="wd-assignments-points" value="100">
-                                    </div>
+                            <div class="row my-3">
+                                <div class="col-3 text-end">
+                                    Display Grade as
                                 </div>
-                                <div class="row my-3">
-                                    <div class="col-3 text-end">
-                                        Assignment Group
-                                    </div>
-                                    <div class="col-8">
-                                        <select class="form-select">
-                                            <option selected="selected" value="1">ASSIGNMENTS</option>
-                                        </select>
-                                    </div>
+                                <div class="col-8">
+                                    <select class="form-select">
+                                        <option selected="selected" value="1">Percentage</option>
+                                    </select>
                                 </div>
-                                <div class="row my-3">
-                                    <div class="col-3 text-end">
-                                        Display Grade as
-                                    </div>
-                                    <div class="col-8">
-                                        <select class="form-select">
-                                            <option selected="selected" value="1">Percentage</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="row my-3">
+                                <div class="col-3 text-end">
                                 </div>
-                                <div class="row my-3">
-                                    <div class="col-3 text-end">
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="wd-assignments-final-count">
-                                            <label class="form-check-label" for="wd-assignments-final-count">
-                                                Do not count this assignment towards the final grade
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-3">
-                                    <div class="col-3 text-end">
-                                        Submission Type
-                                    </div>
-                                    <div class="col-8 border ">
-                                        <select class="form-select my-2 w-50">
-                                            <option selected="selected" value="1">Online</option>
-                                        </select>
-                                        <b>Online Entry Options</b>
-                                        <div class="form-check my-2">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="wd-assignments-text-entry" checked>
-                                            <label class="form-check-label" for="wd-assignments-text-entry">
-                                                Text Entry
-                                            </label>
-                                        </div>
-                                        <div class="form-check my-2">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="wd-assignments-web-url" checked>
-                                            <label class="form-check-label" for="wd-assignments-web-url">
-                                                Website URL
-                                            </label>
-                                        </div>
-                                        <div class="form-check my-2">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="wd-assignments-media-rec" checked>
-                                            <label class="form-check-label" for="wd-assignments-media-rec">
-                                                Media Recordings
-                                            </label>
-                                        </div>
-                                        <div class="form-check my-2">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="wd-assignments-student-annotation" checked>
-                                            <label class="form-check-label" for="wd-assignments-student-annotation">
-                                                Student Annotation
-                                            </label>
-                                        </div>
-                                        <div class="form-check my-2">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="wd-assignments-file-up" checked>
-                                            <label class="form-check-label" for="wd-assignments-file-up">
-                                                File Uploads
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row my-3">
-                                    <div class="col-3 text-end">
-                                        Assign
-                                    </div>
-                                    <div class="col-8 border rounded">
-                                        <label class="form-check-label mt-2" for="wd-assignments-assigned">
-                                            <b>Assign to</b>
+                                <div class="col-8">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="wd-assignments-final-count">
+                                        <label class="form-check-label" for="wd-assignments-final-count">
+                                            Do not count this assignment towards the final grade
                                         </label>
-                                        <input type="text" class="form-control mb-2" id="wd-assignments-assigned"
-                                            value="Everyone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-3">
+                                <div class="col-3 text-end">
+                                    Submission Type
+                                </div>
+                                <div class="col-8 border ">
+                                    <select class="form-select my-2 w-50">
+                                        <option selected="selected" value="1">Online</option>
+                                    </select>
+                                    <b>Online Entry Options</b>
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="wd-assignments-text-entry" checked>
+                                        <label class="form-check-label" for="wd-assignments-text-entry">
+                                            Text Entry
+                                        </label>
+                                    </div>
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="wd-assignments-web-url" checked>
+                                        <label class="form-check-label" for="wd-assignments-web-url">
+                                            Website URL
+                                        </label>
+                                    </div>
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="wd-assignments-media-rec" checked>
+                                        <label class="form-check-label" for="wd-assignments-media-rec">
+                                            Media Recordings
+                                        </label>
+                                    </div>
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="wd-assignments-student-annotation" checked>
+                                        <label class="form-check-label" for="wd-assignments-student-annotation">
+                                            Student Annotation
+                                        </label>
+                                    </div>
+                                    <div class="form-check my-2">
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="wd-assignments-file-up" checked>
+                                        <label class="form-check-label" for="wd-assignments-file-up">
+                                            File Uploads
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row my-3">
+                                <div class="col-3 text-end">
+                                    Assign
+                                </div>
+                                <div class="col-8 border rounded">
+                                    <label class="form-check-label mt-2" for="wd-assignments-assigned">
+                                        <b>Assign to</b>
+                                    </label>
+                                    <input type="text" class="form-control mb-2" id="wd-assignments-assigned"
+                                        value="Everyone">
 
-                                        <label class="form-check-label mt-2" for="wd-assignments-due">
-                                            <b>Due</b>
-                                        </label>
-                                        <div class="input-group mb-2">
-                                            <input type="text" class="form-control">
-                                            <span class="input-group-text">
-                                                <i class="fa-solid fa-calendar-days"></i>
-                                            </span>
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col">
-                                                <label class="form-check-label" for="wd-assignments-due">
-                                                    <b>Available from</b>
-                                                </label>
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control">
-                                                    <span class="input-group-text">
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <label class="form-check-label" for="wd-assignments-due">
-                                                    <b>Until</b>
-                                                </label>
-                                                <div class="input-group mb-2">
-                                                    <input type="text" class="form-control">
-                                                    <span class="input-group-text">
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </span>
-                                                </div>
+                                    <label class="form-check-label mt-2" for="wd-assignments-due">
+                                        <b>Due</b>
+                                    </label>
+                                    <div class="input-group mb-2">
+                                        <input type="text" class="form-control">
+                                        <span class="input-group-text">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </span>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <label class="form-check-label" for="wd-assignments-due">
+                                                <b>Available from</b>
+                                            </label>
+                                            <div class="input-group mb-2">
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-text">
+                                                    <i class="fa-solid fa-calendar-days"></i>
+                                                </span>
                                             </div>
                                         </div>
-                                        <div class="row mt-4">
-                                            <div class="col-12 text-center px-0">
-                                                <button type="button"
-                                                    class="wd-assignments-add btn btn-secondary w-100 px-0 rounded-bottom">+
-                                                    Add</button>
+                                        <div class="col">
+                                            <label class="form-check-label" for="wd-assignments-due">
+                                                <b>Until</b>
+                                            </label>
+                                            <div class="input-group mb-2">
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-text">
+                                                    <i class="fa-solid fa-calendar-days"></i>
+                                                </span>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-12 text-center px-0">
+                                            <button type="button"
+                                                class="wd-assignments-add btn btn-secondary w-100 px-0 rounded-bottom">+
+                                                Add</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr>
-                            <div class="wd-assignments-footer">
-                                <input class="form-check-input my-2" type="checkbox" value=""
-                                    id="wd-assignments-notify">
-                                <label class="form-check-label my-1" for="wd-assignments-notify">
-                                    Notify users that this content has changed
-                                </label>
-                                <form action="/Kanbas/Courses/Assignments/screen.html">
-                                    <button type="button" class="btn btn-success float-end mx-1 my-2"
-                                        id="wd-assignments-save">Save</button>
-                                    <button type="button" class="btn btn-secondary mx-1 my-2 float-end"
-                                        id="wd-assignments-cancel">Cancel</button>
-                                </form>
-                            </div>
-                        </form>
+                        </div>
+                        <hr>
+                        <div class="wd-assignments-footer">
+                            <input class="form-check-input my-2" type="checkbox" value="" id="wd-assignments-notify">
+                            <label class="form-check-label my-1" for="wd-assignments-notify">
+                                Notify users that this content has changed
+                            </label>
+                            <form action="/Kanbas/Courses/Assignments/screen.html">
+                                <button class="btn btn-success float-end mx-1 my-2"
+                                    id="wd-assignments-save">Save</button>
+                                <button class="btn btn-secondary mx-1 my-2 float-end"
+                                    id="wd-assignments-cancel">Cancel</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
