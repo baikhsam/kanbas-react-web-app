@@ -33,7 +33,7 @@ function KanbasNavigation() {
 	];
 	const { pathname } = useLocation();
 	return (
-		<div className="wd-kanbas-nav list-group min-vh-100">
+		<div className="wd-kanbas-nav list-group">
 			<img
 				src="/images/neu.png"
 				alt="Northeastern University Logo"

@@ -1,0 +1,24 @@
+.wd-courses-container {
+	width: 100%;
+}
+
+.wd-courses-breadcrumb {
+    --bs-breadcrumb-divider: '>';
+}
+
+.breadcrumb-item a {
+    color: red;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: black;
+}
+
+.wd-course-header-title {
+	color: red;
+}
+
+.wd-icon {
+	color: red;
+}

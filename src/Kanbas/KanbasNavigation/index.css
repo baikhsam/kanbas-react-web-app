@@ -1,13 +1,13 @@
 .wd-kanbas-nav {
 	list-style: none;
 	background-color: black;
-	min-width: 75px;
-	max-width: 85px;
+	/* min-width: 75px;
+	max-width: 85px; */
+	width: 85px;
 	text-align: center;
 	margin: 0;
 	padding: 0;
-	height: 100%;
-	/* overflow-y: auto; */
+	min-height: 100vh;
 	border-radius: 0;
 }
 
