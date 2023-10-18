@@ -5,6 +5,8 @@ import "./index.css";
 import { FaBars } from "react-icons/fa6";
 import Modules from "./Modules";
 import Home from "./Home";
+import Assignments from "./Assignments";
+import AssignmentEditor from "./Assignments/AssignmentEditor";
 
 function Courses() {
 	const { courseId } = useParams();
@@ -45,11 +47,11 @@ function Courses() {
 						<Route path="Modules" element={<Modules	/>} />
 						<Route
 							path="Assignments"
-							element={<h1>Assignments</h1>}
+							element={<Assignments />}
 						/>
 						<Route
 							path="Assignments/:assignmentId"
-							element={<h1>Assignment Editor</h1>}
+							element={<AssignmentEditor />}
 						/>
 						<Route path="Grades" element={<h1>Grades</h1>} />
 					</Routes>
