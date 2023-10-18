@@ -1,51 +1,23 @@
 [
 	{
-		"_id": "101",
-		"name": "Web Development",
-		"number": "CS4550",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
+		"_id": "RS101",
+		"name": "Rocket Propulsion",
+		"number": "RS4550",
+		"startDate": "2023-01-10",
+		"endDate": "2023-05-15"
 	},
 	{
-		"_id": "102",
-		"name": "Database Systems",
-		"number": "CS5200",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
+		"_id": "RS102",
+		"name": "Aerodynamics",
+		"number": "RS4560",
+		"startDate": "2023-01-10",
+		"endDate": "2023-05-15"
 	},
 	{
-		"_id": "103",
-		"name": "Algorithms",
-		"number": "CS5800",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
-	},
-	{
-		"_id": "104",
-		"name": "Operating Systems",
-		"number": "CS5600",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
-	},
-	{
-		"_id": "105",
-		"name": "Computer Networks",
-		"number": "CS5700",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
-	},
-	{
-		"_id": "106",
-		"name": "Artificial Intelligence",
-		"number": "CS5900",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
-	},
-	{
-		"_id": "107",
-		"name": "Software Engineering",
-		"number": "CS5500",
-		"startDate": "2023-09-07",
-		"endDate": "2023-12-15"
+		"_id": "RS103",
+		"name": "Spacecraft Design",
+		"number": "RS4570",
+		"startDate": "2023-01-10",
+		"endDate": "2023-05-15"
 	}
 ]

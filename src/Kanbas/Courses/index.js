@@ -1,8 +1,10 @@
 import db from "../../Kanbas/Database";
-import { Link, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useParams } from "react-router-dom";
 import CourseNavigation from "./CourseNavigation";
 import "./index.css";
 import { FaBars } from "react-icons/fa6";
+import Modules from "./Modules";
+import Home from "./Home";
 
 function Courses() {
 	const { courseId } = useParams();
@@ -36,11 +38,11 @@ function Courses() {
 				<div className="wd-courses-content-left">
 					<CourseNavigation />
 				</div>
-				<div className="wd-module">
+				<div className="wd-module d-flex flex-row">
 					<Routes>
 						<Route path="/" element={<Navigate to="Home" />} />
-						<Route path="Home" element={<h1>Home</h1>} />
-						<Route path="Modules" element={<h1>Modules</h1>} />
+						<Route path="Home" element={<Home />} />
+						<Route path="Modules" element={<Modules	/>} />
 						<Route
 							path="Assignments"
 							element={<h1>Assignments</h1>}

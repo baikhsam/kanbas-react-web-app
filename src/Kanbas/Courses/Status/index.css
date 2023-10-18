@@ -1,0 +1,26 @@
+.wd-btn-unpublish {
+	background-color: #f5f5f5;
+	color: black;
+}
+
+.wd-btn-published {
+	background-color: green;
+}
+
+.wd-publish {
+	width: 100%;
+}
+
+.wd-status-button-grid button {
+	background-color: #f5f5f5;
+	color: black;
+}
+
+.wd-todo .list-group-item,
+.wd-events .list-group-item {
+	border: 0;
+}
+
+.wd-todo svg {
+	color: red;
+}

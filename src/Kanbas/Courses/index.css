@@ -2,6 +2,22 @@
 	width: 100%;
 }
 
+.wd-module {
+    width: 100%;
+}
+
+.wd-module-center {
+    width: 75%;
+}
+
+.wd-module-center-focus {
+    width: 95%;
+}
+
+.wd-status {
+    width: 25%;
+}
+
 .wd-courses-breadcrumb {
     --bs-breadcrumb-divider: '>';
 }
