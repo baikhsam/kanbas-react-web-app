@@ -38,3 +38,8 @@
 .wd-icon {
 	color: red;
 }
+
+.wd-module-header .btn {
+    background-color: #f5f5f5;
+    color: #2d3b45;
+}

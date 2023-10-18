@@ -16,7 +16,7 @@ function ModuleButtons() {
 					data-bs-toggle="dropdown"
 					aria-expanded="false"
 				>
-					<FaRegCheckCircle color='green' className='float-start mx-1'/>
+					<FaRegCheckCircle color='green' className='float-start mx-1 my-1'/>
 					Publish All
 				</button>
 				<ul className="dropdown-menu">
@@ -32,7 +32,7 @@ function ModuleButtons() {
 					</li>
 				</ul>
 			</div>
-			<button type="button" className="btn btn-sm btn-danger mx-1">
+			<button type="button" className="btn btn-sm btn-danger mx-1 text-white bg-danger">
 				+ Module
 			</button>
 			<button

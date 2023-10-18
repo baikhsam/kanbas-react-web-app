@@ -37,7 +37,7 @@ function KanbasNavigation() {
 			<img
 				src="/images/neu.png"
 				alt="Northeastern University Logo"
-				class="wd-logo align-self-center"
+				className="wd-logo align-self-center"
 			/>
 			{links.map((link, index) => (
 				<Link

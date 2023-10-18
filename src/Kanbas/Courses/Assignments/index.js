@@ -36,7 +36,7 @@ function Assignments() {
 					</button>
 					<button
 						type="button"
-						className="btn btn-sm btn-danger mx-1 float-end"
+						className="btn btn-sm btn-danger mx-1 float-end text-white bg-danger"
 					>
 						+ Assignment
 					</button>

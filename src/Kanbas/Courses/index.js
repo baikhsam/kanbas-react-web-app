@@ -1,5 +1,5 @@
 import db from "../../Kanbas/Database";
-import { Link, Navigate, Route, Routes, useParams } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import CourseNavigation from "./CourseNavigation";
 import "./index.css";
 import { FaBars } from "react-icons/fa6";
@@ -11,6 +11,7 @@ import AssignmentEditor from "./Assignments/AssignmentEditor";
 function Courses() {
 	const { courseId } = useParams();
 	const course = db.courses.find((course) => course._id === courseId);
+	const location = useLocation().pathname.split("/");
 
 	return (
 		<div className="wd-courses-container">
@@ -30,7 +31,7 @@ function Courses() {
 							className="breadcrumb-item active"
 							aria-current="page"
 						>
-							Home
+							{location.slice(-1)}
 						</li>
 					</ol>
 				</nav>

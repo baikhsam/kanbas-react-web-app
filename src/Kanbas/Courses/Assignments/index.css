@@ -23,4 +23,15 @@
 .wd-list-header {
 	background-color: lightgray;
 	height: 75px;
+	border: 1px solid grey;
+}
+
+#assignments-list .list-group-item {
+	border-bottom: 1px solid grey;
+	border-right: 1px solid grey;
+}
+
+.wd-assignments-header .btn {
+    background-color: #f5f5f5;
+    color: #2d3b45;
 }

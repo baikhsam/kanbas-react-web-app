@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import db from "../../../Database";
 import "./index.css";
+import { FaCircleCheck, FaEllipsisVertical, FaCalendarDays } from "react-icons/fa6";
 
 function AssignmentEditor() {
 	const { assignmentId } = useParams();
@@ -21,26 +22,26 @@ function AssignmentEditor() {
 				<div className="wd-assignments-header my-2">
 					<button
 						type="button"
-						className="wd-module-header-settings btn btn-sm btn-secondary mx-1 my-1 float-end"
+						className="wd-module-header-settings btn btn-sm btn-secondary mx-1 float-end"
 					>
-						<i className="fa-solid fa-sm fa-ellipsis-vertical"></i>
+						<FaEllipsisVertical />
 					</button>
 					<div className="mx-2 my-1 float-end wd-assignments-editor-status">
-						<i className="fa-solid fa-circle-check"></i>
+						<FaCircleCheck color="green" className="mx-1" />
 						Published
 					</div>
 				</div>
 				<hr />
 				<div className="wd-assignments-editor my-2">
 					<div className="mb-3">
-						<label for="wd-assignments-name" className="form-label">
+						<label htmlFor="wd-assignments-name" className="form-label">
 							Assignment Name
 						</label>
 						<input
 							type="text"
 							className="form-control"
 							id="wd-assignments-name"
-							value={assignment.title}
+							defaultValue={assignment.title}
 						/>
 					</div>
 					<div className="mb-3">
@@ -48,8 +49,8 @@ function AssignmentEditor() {
 							className="form-control"
 							id="wd-assignment-description"
 							rows="3"
+							defaultValue={'This is the assignment description.'}
 						>
-							This is the assignment description.
 						</textarea>
 					</div>
 					<div className="container">
@@ -60,25 +61,29 @@ function AssignmentEditor() {
 									type="text"
 									className="form-control"
 									id="wd-assignments-points"
-									value="100"
+									defaultValue="100"
 								/>
 							</div>
 						</div>
 						<div className="row my-3">
-							<div className="col-3 text-end">Assignment Group</div>
+							<div className="col-3 text-end">
+								Assignment Group
+							</div>
 							<div className="col-8">
-								<select className="form-select">
-									<option selected="selected" value="1">
+								<select className="form-select" defaultValue={"1"}>
+									<option value="1">
 										ASSIGNMENTS
 									</option>
 								</select>
 							</div>
 						</div>
 						<div className="row my-3">
-							<div className="col-3 text-end">Display Grade as</div>
+							<div className="col-3 text-end">
+								Display Grade as
+							</div>
 							<div className="col-8">
-								<select className="form-select">
-									<option selected="selected" value="1">
+								<select className="form-select" defaultValue={"1"}>
+									<option value="1">
 										Percentage
 									</option>
 								</select>
@@ -91,12 +96,12 @@ function AssignmentEditor() {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultValue=""
 										id="wd-assignments-final-count"
 									/>
 									<label
 										className="form-check-label"
-										for="wd-assignments-final-count"
+										htmlFor="wd-assignments-final-count"
 									>
 										Do not count this assignment towards the
 										final grade
@@ -105,10 +110,12 @@ function AssignmentEditor() {
 							</div>
 						</div>
 						<div className="row my-3">
-							<div className="col-3 text-end">Submission Type</div>
+							<div className="col-3 text-end">
+								Submission Type
+							</div>
 							<div className="col-8 border">
-								<select className="form-select my-2 w-50">
-									<option selected="selected" value="1">
+								<select className="form-select my-2 w-50" defaultValue={"1"}>
+									<option value="1">
 										Online
 									</option>
 								</select>
@@ -117,13 +124,13 @@ function AssignmentEditor() {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultValue=""
 										id="wd-assignments-text-entry"
-										checked
+										defaultChecked
 									/>
 									<label
 										className="form-check-label"
-										for="wd-assignments-text-entry"
+										htmlFor="wd-assignments-text-entry"
 									>
 										Text Entry
 									</label>
@@ -132,13 +139,13 @@ function AssignmentEditor() {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultValue=""
 										id="wd-assignments-web-url"
-										checked
+										defaultChecked
 									/>
 									<label
 										className="form-check-label"
-										for="wd-assignments-web-url"
+										htmlFor="wd-assignments-web-url"
 									>
 										Website URL
 									</label>
@@ -147,13 +154,13 @@ function AssignmentEditor() {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultValue=""
 										id="wd-assignments-media-rec"
-										checked
+										defaultChecked
 									/>
 									<label
 										className="form-check-label"
-										for="wd-assignments-media-rec"
+										htmlFor="wd-assignments-media-rec"
 									>
 										Media Recordings
 									</label>
@@ -162,13 +169,13 @@ function AssignmentEditor() {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultValue=""
 										id="wd-assignments-student-annotation"
-										checked
+										defaultChecked
 									/>
 									<label
 										className="form-check-label"
-										for="wd-assignments-student-annotation"
+										htmlFor="wd-assignments-student-annotation"
 									>
 										Student Annotation
 									</label>
@@ -177,13 +184,13 @@ function AssignmentEditor() {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value=""
+										defaultValue=""
 										id="wd-assignments-file-up"
-										checked
+										defaultChecked
 									/>
 									<label
 										className="form-check-label"
-										for="wd-assignments-file-up"
+										htmlFor="wd-assignments-file-up"
 									>
 										File Uploads
 									</label>
@@ -195,7 +202,7 @@ function AssignmentEditor() {
 							<div className="col-8 border rounded">
 								<label
 									className="form-check-label mt-2"
-									for="wd-assignments-assigned"
+									htmlFor="wd-assignments-assigned"
 								>
 									<b>Assign to</b>
 								</label>
@@ -203,26 +210,29 @@ function AssignmentEditor() {
 									type="text"
 									className="form-control mb-2"
 									id="wd-assignments-assigned"
-									value="Everyone"
+									defaultValue="Everyone"
 								/>
 
 								<label
 									className="form-check-label mt-2"
-									for="wd-assignments-due"
+									htmlFor="wd-assignments-due"
 								>
 									<b>Due</b>
 								</label>
 								<div className="input-group mb-2">
-									<input type="text" className="form-control" />
+									<input
+										type="text"
+										className="form-control"
+									/>
 									<span className="input-group-text">
-										<i className="fa-solid fa-calendar-days"></i>
+										<FaCalendarDays />
 									</span>
 								</div>
 								<div className="row mt-3">
 									<div className="col">
 										<label
 											className="form-check-label"
-											for="wd-assignments-due"
+											htmlFor="wd-assignments-due"
 										>
 											<b>Available from</b>
 										</label>
@@ -232,14 +242,14 @@ function AssignmentEditor() {
 												className="form-control"
 											/>
 											<span className="input-group-text">
-												<i className="fa-solid fa-calendar-days"></i>
+												<FaCalendarDays />
 											</span>
 										</div>
 									</div>
 									<div className="col">
 										<label
 											className="form-check-label"
-											for="wd-assignments-due"
+											htmlFor="wd-assignments-due"
 										>
 											<b>Until</b>
 										</label>
@@ -249,7 +259,7 @@ function AssignmentEditor() {
 												className="form-control"
 											/>
 											<span className="input-group-text">
-												<i className="fa-solid fa-calendar-days"></i>
+												<FaCalendarDays />
 											</span>
 										</div>
 									</div>
@@ -272,12 +282,12 @@ function AssignmentEditor() {
 						<input
 							className="form-check-input my-2"
 							type="checkbox"
-							value=""
+							defaultValue=""
 							id="wd-assignments-notify"
 						/>
 						<label
 							className="form-check-label ms-1 my-1"
-							for="wd-assignments-notify"
+							htmlFor="wd-assignments-notify"
 						>
 							Notify users that this content has changed
 						</label>
