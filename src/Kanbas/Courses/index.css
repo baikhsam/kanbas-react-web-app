@@ -39,7 +39,7 @@
 	color: red;
 }
 
-.wd-module-header .btn {
+.wd-module-header .btn, .wd-grades .btn {
     background-color: #f5f5f5;
     color: #2d3b45;
 }
