@@ -6,7 +6,10 @@ import {
 	FaGear,
 	FaFilter,
 	FaArrowRight,
+	FaChevronDown,
+	FaMagnifyingGlass,
 } from "react-icons/fa6";
+import "./index.css";
 
 function Grades() {
 	const { courseId } = useParams();
@@ -74,28 +77,45 @@ function Grades() {
 					</div>
 					<div className="row mb-2">
 						<div className="col">
-							<select
-								className="form-select"
-								aria-label="Default select example"
-								defaultValue="0"
-							>
-								<option value="0">Search Students</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select>
+							<div className="inner-addon">
+								<FaMagnifyingGlass className="wd-input-icon left-addon" />
+								<input
+									className="form-control"
+									list="search-students-list"
+									placeholder="Search Students"
+									id="search-students"
+								/>
+								<FaChevronDown className="wd-input-icon right-addon" />
+							</div>
+							<datalist id="search-students-list">
+								{enrollments.map((enrollment) => {
+									const user = db.users.find(
+										(user) => user._id === enrollment.user
+									);
+									return (
+										<option
+											value={`${user.firstName} ${user.lastName}`}
+										/>
+									);
+								})}
+							</datalist>
 						</div>
 						<div className="col">
-							<select
-								className="form-select"
-								aria-label="Default select example"
-								defaultValue="0"
-							>
-								<option value="0">Search Assignments</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select>
+							<div className="inner-addon">
+								<FaMagnifyingGlass className="wd-input-icon left-addon" />
+								<input
+									className="form-control"
+									list="search-assignments-list"
+									placeholder="Search Assignments"
+									id="search-assignments"
+								/>
+								<FaChevronDown className="wd-input-icon right-addon" />
+							</div>
+							<datalist id="search-assignments-list">
+								{assignments.map((assignment) => (
+									<option value={assignment.title}/>
+								))}
+							</datalist>
 						</div>
 					</div>
 					<div className="row mb-2">
