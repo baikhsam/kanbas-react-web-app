@@ -72,7 +72,7 @@ function Status() {
 				<a href="#todos">View Calendar</a>
 			</span>
 			<hr />
-			<ul class="wd-events list-group mt-2 mb-2">
+			<ul class="wd-events list-group mt-1 mb-2">
 				<li class="list-group-item">
 					<FaCalendarDays className="pe-1" />
 					<a href="#todos">

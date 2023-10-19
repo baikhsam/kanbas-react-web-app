@@ -7,6 +7,8 @@ import {
 	FaGripVertical,
 	FaPenToSquare,
 	FaPlus,
+	FaMagnifyingGlass,
+	FaChevronDown
 } from "react-icons/fa6";
 import { GoTriangleDown } from "react-icons/go";
 import "./index.css";
@@ -21,13 +23,21 @@ function Assignments() {
 		<>
 			<div className="wd-assignments mx-5 d-flex flex-column">
 				<div className="wd-assignments-header my-2">
-					<input
-						className="form-control float-start w-25 h-100"
-						type="text"
-						title="Type name of assignment to search for"
-						placeholder="Search for Assignments"
-						aria-label="Search for Assignments"
-					/>
+					<div className="inner-addon float-start">
+						<FaMagnifyingGlass className="wd-input-icon left-addon" />
+						<input
+							className="form-control"
+							list="search-assignments-list"
+							placeholder="Search Assignments"
+							id="search-assignments"
+						/>
+						<FaChevronDown className="wd-input-icon right-addon" />
+					</div>
+					<datalist id="search-assignments-list">
+						{courseAssignments.map((assignment) => (
+							<option value={assignment.title} />
+						))}
+					</datalist>
 					<button
 						type="button"
 						className="wd-module-header-settings btn btn-sm btn-secondary mx-1 float-end"

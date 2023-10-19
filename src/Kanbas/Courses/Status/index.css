@@ -24,3 +24,8 @@
 .wd-todo svg {
 	color: red;
 }
+
+.wd-status a {
+	text-decoration: none;
+	color: red;
+}
