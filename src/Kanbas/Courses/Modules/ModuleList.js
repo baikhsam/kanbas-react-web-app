@@ -13,8 +13,8 @@ function ModuleList() {
 			{modules
 				.filter((module) => module.course === courseId)
 				.map((module, index) => (
-					<div className="accordion">
-						<div key={index} className="accordion-item mb-5">
+					<div className="accordion" key={index}>
+						<div className="accordion-item mb-5">
 							<h2 className="accordion-header">
 								<button
 									className="accordion-button"
