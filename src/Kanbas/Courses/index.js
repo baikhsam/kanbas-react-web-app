@@ -1,4 +1,3 @@
-import db from "../../Kanbas/Database";
 import {
 	Link,
 	Navigate,
@@ -74,6 +73,7 @@ function Courses() {
 							path="Assignments/:assignmentId"
 							element={<AssignmentEditor />}
 						/>
+						<Route path="Assignments/create" element={<AssignmentEditor />} />
 						<Route path="Grades" element={<Grades />} />
 					</Routes>
 				</div>

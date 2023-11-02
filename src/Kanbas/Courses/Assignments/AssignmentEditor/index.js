@@ -1,21 +1,28 @@
 import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import db from "../../../Database";
+
 import "./index.css";
-import { FaCircleCheck, FaEllipsisVertical, FaCalendarDays } from "react-icons/fa6";
+import { FaCircleCheck, FaEllipsisVertical } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	addAssignment,
+	updateAssignment,
+	selectAssignment,
+} from "../assignmentsReducer";
 
 function AssignmentEditor() {
-	const { assignmentId } = useParams();
-	const assignment = db.assignments.find(
-		(assignment) => assignment._id === assignmentId
+	const { courseId } = useParams();
+
+	const assignments = useSelector(
+		(state) => state.assignmentsReducer.assignments
+	);
+	const assignment = useSelector(
+		(state) => state.assignmentsReducer.assignment
 	);
 
-	const { courseId } = useParams();
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const handleSave = () => {
-		console.log("Actually saving assignment TBD in later assignments");
-		navigate(`/Kanbas/Courses/${courseId}/Assignments`);
-	};
+
 	return (
 		<>
 			<div className="wd-assignments mx-5 d-flex flex-column">
@@ -34,14 +41,25 @@ function AssignmentEditor() {
 				<hr />
 				<div className="wd-assignments-editor my-2">
 					<div className="mb-3">
-						<label htmlFor="wd-assignments-name" className="form-label">
+						<label
+							htmlFor="wd-assignments-name"
+							className="form-label"
+						>
 							Assignment Name
 						</label>
 						<input
 							type="text"
 							className="form-control"
 							id="wd-assignments-name"
-							defaultValue={assignment.title}
+							value={assignment.title}
+							onChange={(e) =>
+								dispatch(
+									selectAssignment({
+										...assignment,
+										title: e.target.value,
+									})
+								)
+							}
 						/>
 					</div>
 					<div className="mb-3">
@@ -49,9 +67,16 @@ function AssignmentEditor() {
 							className="form-control"
 							id="wd-assignment-description"
 							rows="3"
-							defaultValue={'This is the assignment description.'}
-						>
-						</textarea>
+							value={assignment.description}
+							onChange={(e) =>
+								dispatch(
+									selectAssignment({
+										...assignment,
+										description: e.target.value,
+									})
+								)
+							}
+						></textarea>
 					</div>
 					<div className="container">
 						<div className="row my-3">
@@ -61,7 +86,15 @@ function AssignmentEditor() {
 									type="text"
 									className="form-control"
 									id="wd-assignments-points"
-									defaultValue="100"
+									value={assignment.points}
+									onChange={(e) =>
+										dispatch(
+											selectAssignment({
+												...assignment,
+												points: e.target.value,
+											})
+										)
+									}
 								/>
 							</div>
 						</div>
@@ -70,10 +103,11 @@ function AssignmentEditor() {
 								Assignment Group
 							</div>
 							<div className="col-8">
-								<select className="form-select" defaultValue={"1"}>
-									<option value="1">
-										ASSIGNMENTS
-									</option>
+								<select
+									className="form-select"
+									defaultValue={"1"}
+								>
+									<option value="1">ASSIGNMENTS</option>
 								</select>
 							</div>
 						</div>
@@ -82,10 +116,11 @@ function AssignmentEditor() {
 								Display Grade as
 							</div>
 							<div className="col-8">
-								<select className="form-select" defaultValue={"1"}>
-									<option value="1">
-										Percentage
-									</option>
+								<select
+									className="form-select"
+									defaultValue={"1"}
+								>
+									<option value="1">Percentage</option>
 								</select>
 							</div>
 						</div>
@@ -114,10 +149,11 @@ function AssignmentEditor() {
 								Submission Type
 							</div>
 							<div className="col-8 border">
-								<select className="form-select my-2 w-50" defaultValue={"1"}>
-									<option value="1">
-										Online
-									</option>
+								<select
+									className="form-select my-2 w-50"
+									defaultValue={"1"}
+								>
+									<option value="1">Online</option>
 								</select>
 								<b>Online Entry Options</b>
 								<div className="form-check my-2">
@@ -219,15 +255,19 @@ function AssignmentEditor() {
 								>
 									<b>Due</b>
 								</label>
-								<div className="input-group mb-2">
-									<input
-										type="text"
-										className="form-control"
-									/>
-									<span className="input-group-text">
-										<FaCalendarDays />
-									</span>
-								</div>
+								<input
+									type="date"
+									className="form-control"
+									value={assignment.dueDate}
+									onChange={(e) =>
+										dispatch(
+											selectAssignment({
+												...assignment,
+												dueDate: e.target.value,
+											})
+										)
+									}
+								/>
 								<div className="row mt-3">
 									<div className="col">
 										<label
@@ -236,15 +276,20 @@ function AssignmentEditor() {
 										>
 											<b>Available from</b>
 										</label>
-										<div className="input-group mb-2">
-											<input
-												type="text"
-												className="form-control"
-											/>
-											<span className="input-group-text">
-												<FaCalendarDays />
-											</span>
-										</div>
+										<input
+											type="date"
+											className="form-control"
+											value={assignment.availableFromDate}
+											onChange={(e) =>
+												dispatch(
+													selectAssignment({
+														...assignment,
+														availableFromDate:
+															e.target.value,
+													})
+												)
+											}
+										/>
 									</div>
 									<div className="col">
 										<label
@@ -253,15 +298,22 @@ function AssignmentEditor() {
 										>
 											<b>Until</b>
 										</label>
-										<div className="input-group mb-2">
-											<input
-												type="text"
-												className="form-control"
-											/>
-											<span className="input-group-text">
-												<FaCalendarDays />
-											</span>
-										</div>
+										<input
+											type="date"
+											className="form-control"
+											value={
+												assignment.availableUntilDate
+											}
+											onChange={(e) =>
+												dispatch(
+													selectAssignment({
+														...assignment,
+														availableUntilDate:
+															e.target.value,
+													})
+												)
+											}
+										/>
 									</div>
 								</div>
 								<div className="row mt-4">
@@ -292,7 +344,17 @@ function AssignmentEditor() {
 							Notify users that this content has changed
 						</label>
 						<button
-							onClick={handleSave}
+							onClick={() => {
+								if (assignments.find((a) => a._id === assignment._id)) {
+									dispatch(updateAssignment(assignment));
+								}
+								else {
+									dispatch(addAssignment(assignment));
+								}
+								navigate(
+									`/Kanbas/Courses/${courseId}/Assignments`
+								);
+							}}
 							className="btn btn-success float-end mx-1 my-2"
 							id="wd-assignments-save"
 						>
