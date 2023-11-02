@@ -2,12 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-import db from "../../Database";
 import "./index.css";
+import { useSelector } from "react-redux";
 
 function ModuleList() {
 	const { courseId } = useParams();
-	const modules = db.modules;
+	const modules = useSelector((state) => state.modulesReducer.modules);
+
 	return (
 		<>
 			{modules

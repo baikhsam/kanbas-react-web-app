@@ -106,6 +106,9 @@ function EditDashboard() {
 						</li>
 					))}
 				</div>
+				<button className="btn btn-danger mt-4">
+					<Link className="text-white text-decoration-none" to={"/Kanbas/Dashboard"}>Publish</Link>
+				</button>
 			</div>
 		</div>
 	);

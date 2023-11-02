@@ -15,10 +15,12 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
+import { useSelector } from "react-redux";
 
 function Courses() {
+	const { courses } = useSelector((state) => state.coursesReducer);
 	const { courseId } = useParams();
-	const course = db.courses.find((course) => course._id === courseId);
+	const course = courses.find((course) => course._id === courseId);
 	const location = useLocation().pathname.split("/");
 	const inAssignments = location.includes("Assignments");
 	console.log(location);
@@ -30,7 +32,6 @@ function Courses() {
 					className="wd-courses-breadcrumb ms-3 float-start"
 					aria-label="breadcrumb"
 				>
-					
 					<ol className="breadcrumb">
 						<li>
 							<FaBars className="wd-icon mx-2" size={24} />
@@ -48,15 +49,15 @@ function Courses() {
 						</li>
 					</ol>
 				</nav>
-				{inAssignments &&
-				<button
-					type="button"
-					className="btn btn-sm btn-secondary mx-3 float-end"
-				>
-					<FaGlasses className="me-2 mb-1"/>
-					Student View
-				</button>
-				}
+				{inAssignments && (
+					<button
+						type="button"
+						className="btn btn-sm btn-secondary mx-3 float-end"
+					>
+						<FaGlasses className="me-2 mb-1" />
+						Student View
+					</button>
+				)}
 			</div>
 			<hr className="ms-3" />
 			<div className="wd-courses-content-block d-flex flex-row ms-3">

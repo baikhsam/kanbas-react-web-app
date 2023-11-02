@@ -1,6 +1,8 @@
 import {FaEllipsisV, FaRegCheckCircle} from 'react-icons/fa';
+import {Link, useParams} from 'react-router-dom';
 
 function ModuleButtons() {
+	const { courseId } = useParams();
 	return (
 		<div className="wd-module-header my-2 mx-2 d-flex justify-content-end">
 			<button type="button" className="btn btn-sm btn-secondary mx-1">
@@ -32,9 +34,11 @@ function ModuleButtons() {
 					</li>
 				</ul>
 			</div>
+			<Link to={`/Kanbas/Courses/${courseId}/Modules/Edit`}>
 			<button type="button" className="btn btn-sm btn-danger mx-1 text-white bg-danger">
 				+ Module
 			</button>
+			</Link>
 			<button
 				type="button"
 				className="wd-module-header-settings btn btn-sm btn-secondary mx-1"
