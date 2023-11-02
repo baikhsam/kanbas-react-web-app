@@ -1,8 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-
 import "../index.css";
 import {
 	addModule,
@@ -83,6 +82,13 @@ function EditModules() {
 						<p>{module._id}</p>
 					</li>
 				))}
+			<li className="list-group-item">
+				<Link to={`/Kanbas/Courses/${courseId}`}>
+					<button className="btn btn-danger float-start mx-1">
+						Publish
+					</button>
+				</Link>
+			</li>
 		</ul>
 	);
 }
