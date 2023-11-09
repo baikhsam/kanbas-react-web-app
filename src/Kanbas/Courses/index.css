@@ -1,0 +1,45 @@
+.wd-courses-container {
+	width: 100%;
+}
+
+.wd-module {
+    width: 100%;
+}
+
+.wd-module-center {
+    width: 75%;
+}
+
+.wd-module-center-focus {
+    width: 95%;
+}
+
+.wd-status {
+    width: 25%;
+}
+
+.wd-courses-breadcrumb {
+    --bs-breadcrumb-divider: '>';
+}
+
+.breadcrumb-item a {
+    color: red;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: black;
+}
+
+.wd-course-header-title {
+	color: red;
+}
+
+.wd-icon {
+	color: red;
+}
+
+.wd-module-header .btn, .wd-grades .btn, .wd-courses-header .btn {
+    background-color: #f5f5f5;
+    color: #2d3b45;
+}

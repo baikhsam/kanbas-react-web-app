@@ -1,0 +1,23 @@
+/* search-filters styling */
+.inner-addon {
+	position: relative;
+}
+
+.inner-addon input {
+	padding-left: 40px;
+	padding-right: 30px;
+}
+
+.inner-addon .wd-input-icon {
+	position: absolute;
+	pointer-events: none;
+}
+
+.left-addon.wd-input-icon {
+	left: 10px;
+	top: 10px;
+}
+.right-addon.wd-input-icon {
+	right: 10px;
+	top: 10px;
+}
