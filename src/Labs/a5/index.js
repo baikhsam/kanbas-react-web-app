@@ -14,9 +14,9 @@ function Assignment5() {
 					Welcome
 				</a>
 			</div>
+			<EncodingParametersInURLs />
 			<WorkingWithArrays />
 			<WorkingWithObjects />
-			<EncodingParametersInURLs />
 			{/* <SimpleAPIExamples /> */}
 		</div>
 	);
