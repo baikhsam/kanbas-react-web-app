@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -8,29 +8,51 @@ import {
 	deleteModule,
 	updateModule,
 	setModule,
+	setModules,
 } from "../modulesReducer";
+import * as client from "../client";
 import { useSelector, useDispatch } from "react-redux";
 
 function EditModules() {
+	const dispatch = useDispatch();
 	const { courseId } = useParams();
+	useEffect(() => {
+		client.findModulesForCourse(courseId).then((modules) => {
+			dispatch(setModules(modules));
+		});
+	}, [courseId, dispatch]);
 	const modules = useSelector((state) => state.modulesReducer.modules);
 	const module = useSelector((state) => state.modulesReducer.module);
-	const dispatch = useDispatch();
+
+	const handleUpdateModule = async () => {
+		const status = await client.updateModule(module);
+		dispatch(updateModule(module));
+	};
+
+	const handleDeleteModule = (moduleId) => {
+		client.deleteModule(moduleId).then((status) => {
+			dispatch(deleteModule(moduleId));
+		});
+	};
+
+	const handleAddModule = () => {
+		client.createModule(courseId, module).then((module) => {
+			dispatch(addModule(module));
+		});
+	};
 
 	return (
 		<ul className="list-group w-75">
 			<li className="list-group-item">
 				<button
 					className="btn btn-success float-end mx-1"
-					onClick={() =>
-						dispatch(addModule({ ...module, course: courseId }))
-					}
+					onClick={handleAddModule}
 				>
 					Add Module
 				</button>
 				<button
 					className="btn btn-primary float-end"
-					onClick={() => dispatch(updateModule(module))}
+					onClick={handleUpdateModule}
 				>
 					Update Module
 				</button>
@@ -73,7 +95,7 @@ function EditModules() {
 						</button>
 						<button
 							className="btn btn-danger float-end"
-							onClick={() => dispatch(deleteModule(module._id))}
+							onClick={() => handleDeleteModule(module._id)}
 						>
 							Delete
 						</button>

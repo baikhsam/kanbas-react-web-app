@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "./index.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setModules } from "./modulesReducer";
+import { findModulesForCourse } from "./client";
 
 function ModuleList() {
+	const dispatch = useDispatch();
 	const { courseId } = useParams();
+	useEffect(() => {
+		findModulesForCourse(courseId).then((modules) => {
+			dispatch(setModules(modules));
+		});
+	}, [courseId, dispatch]);
 	const modules = useSelector((state) => state.modulesReducer.modules);
-
 	return (
 		<>
 			{modules

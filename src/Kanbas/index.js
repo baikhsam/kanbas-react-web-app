@@ -8,6 +8,7 @@ import store from "./store";
 import EditModules from "./Courses/Modules/EditModules";
 
 function Kanbas() {
+
 	return (
 		<Provider store={store}>
 			<div className="d-flex">
