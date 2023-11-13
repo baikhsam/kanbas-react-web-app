@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
-import { React } from "react";
-import { useSelector } from "react-redux";
+import { React, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaRegPenToSquare } from "react-icons/fa6";
+import { setCourses } from "./coursesReducer";
+import { findAllCourses } from "./client";
 import "./index.css";
 
 function Dashboard() {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		findAllCourses().then((courses) => {
+			dispatch(setCourses(courses));
+		});
+	}, [dispatch]);
 	const { courses } = useSelector((state) => state.coursesReducer);
 	const course_count = courses.length;
 

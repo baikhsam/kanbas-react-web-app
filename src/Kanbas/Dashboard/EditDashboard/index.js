@@ -1,20 +1,44 @@
 import { Link } from "react-router-dom";
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "../index.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addNewCourse, deleteCourse, updateCourse } from "../coursesReducer";
+import {
+	addNewCourse,
+	deleteCourse,
+	updateCourse,
+	setCourses,
+	setCourse,
+} from "../coursesReducer";
+import * as client from "../client";
 
 function EditDashboard() {
-	const { courses } = useSelector((state) => state.coursesReducer);
-	const course_count = courses.length;
 	const dispatch = useDispatch();
-	const newDefaultCourse = {
-		name: "New Course",
-		number: "New Course Number",
-		startDate: "2023-09-10",
-		endDate: "2023-12-15",
+	useEffect(() => {
+		client.findAllCourses().then((courses) => {
+			dispatch(setCourses(courses));
+		});
+	}, [dispatch]);
+	const { courses } = useSelector((state) => state.coursesReducer);
+	const { course } = useSelector((state) => state.coursesReducer);
+	const course_count = courses.length;
+
+	const handleUpdateCourse = async () => {
+		client.updateCourse(course).then((status) => {
+			dispatch(updateCourse(course));
+		});
 	};
-	const [newCourse, setNewCourse] = useState(newDefaultCourse);
+
+	const handleAddCourse = () => {
+		client.addCourse(course).then((course) => {
+			dispatch(addNewCourse(course));
+		});
+	};
+
+	const handleDeleteCourse = (courseId) => {
+		client.deleteCourse(courseId).then((status) => {
+			dispatch(deleteCourse(courseId));
+		});
+	};
 
 	return (
 		<div className="wd-dashboard-container">
@@ -27,52 +51,52 @@ function EditDashboard() {
 				<hr />
 				<input
 					className="form-control mb-2 w-25"
-					value={newCourse.name}
+					value={course.name}
 					onChange={(e) =>
-						setNewCourse({ ...newCourse, name: e.target.value })
+						dispatch(setCourse({ ...course, name: e.target.value }))
 					}
 				/>
 				<input
 					className="form-control mb-2 w-25"
-					value={newCourse.number}
+					value={course.number}
 					onChange={(e) =>
-						setNewCourse({ ...newCourse, number: e.target.value })
-					}
-				/>
-				<input
-					className="form-control mb-2 w-25"
-					type="date"
-					value={newCourse.startDate}
-					onChange={(e) =>
-						setNewCourse({
-							...newCourse,
-							startDate: e.target.value,
-						})
+						dispatch(
+							setCourse({ ...course, number: e.target.value })
+						)
 					}
 				/>
 				<input
 					className="form-control mb-2 w-25"
 					type="date"
-					value={newCourse.endDate}
+					value={course.startDate}
 					onChange={(e) =>
-						setNewCourse({ ...newCourse, endDate: e.target.value })
+						dispatch(
+							setCourse({
+								...course,
+								startDate: e.target.value,
+							})
+						)
+					}
+				/>
+				<input
+					className="form-control mb-2 w-25"
+					type="date"
+					value={course.endDate}
+					onChange={(e) =>
+						dispatch(
+							setCourse({ ...course, endDate: e.target.value })
+						)
 					}
 				/>
 				<button
 					className="btn btn-success me-2"
-					onClick={(event) => {
-						event.preventDefault();
-						dispatch(addNewCourse(newCourse));
-					}}
+					onClick={handleAddCourse}
 				>
 					Add
 				</button>
 				<button
 					className="btn btn-primary"
-					onClick={(event) => {
-						event.preventDefault();
-						dispatch(updateCourse(newCourse));
-					}}
+					onClick={handleUpdateCourse}
 				>
 					Update
 				</button>
@@ -89,16 +113,15 @@ function EditDashboard() {
 							<button
 								className="btn btn-warning me-2 ms-auto"
 								onClick={(event) => {
-									setNewCourse(course);
+									dispatch(setCourse(course));
 								}}
 							>
 								Edit
 							</button>
 							<button
 								className="btn btn-danger"
-								onClick={(event) => {
-									event.preventDefault();
-									dispatch(deleteCourse(course._id));
+								onClick={() => {
+									handleDeleteCourse(course._id);
 								}}
 							>
 								Delete
@@ -107,7 +130,12 @@ function EditDashboard() {
 					))}
 				</div>
 				<button className="btn btn-danger mt-4">
-					<Link className="text-white text-decoration-none" to={"/Kanbas/Dashboard"}>Publish</Link>
+					<Link
+						className="text-white text-decoration-none"
+						to={"/Kanbas/Dashboard"}
+					>
+						Publish
+					</Link>
 				</button>
 			</div>
 		</div>

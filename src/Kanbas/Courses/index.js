@@ -14,12 +14,21 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { findCourseById } from "../Dashboard/client";
+import { useEffect } from "react";
+import { setCourse } from "../Dashboard/coursesReducer";
 
 function Courses() {
-	const { courses } = useSelector((state) => state.coursesReducer);
+	const dispatch = useDispatch();
 	const { courseId } = useParams();
-	const course = courses.find((course) => course._id === courseId);
+	useEffect(() => {
+		findCourseById(courseId).then((course) => {
+			dispatch(setCourse(course));
+		});
+	}, [courseId, dispatch]);
+
+	const course = useSelector((state) => state.coursesReducer.course);
 	const location = useLocation().pathname.split("/");
 	const inAssignments = location.includes("Assignments");
 	console.log(location);
