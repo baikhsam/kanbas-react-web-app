@@ -105,7 +105,7 @@ function Courses() {
 								element={<AssignmentEditor />}
 							/>
 							<Route
-								path="Assignments/create"
+								path="Assignments/Create"
 								element={<AssignmentEditor />}
 							/>
 							<Route path="Grades" element={<Grades />} />

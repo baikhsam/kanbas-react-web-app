@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import {
@@ -14,27 +14,41 @@ import {
 import { GoTriangleDown } from "react-icons/go";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteAssignment, selectAssignment } from "./assignmentsReducer";
+import {
+	deleteAssignment,
+	selectAssignment,
+	setAssignments,
+} from "./assignmentsReducer";
+import * as client from "./client";
 
 function Assignments() {
 	const { courseId } = useParams();
-	const assignments = useSelector(
+	const dispatch = useDispatch();
+	useEffect(() => {
+		client.findAssignmentsForCourse(courseId).then((assignments) => {
+			dispatch(setAssignments(assignments));
+		});
+	}, [courseId, dispatch]);
+	const courseAssignments = useSelector(
 		(state) => state.assignmentsReducer.assignments
 	);
-	const courseAssignments = assignments.filter(
-		(assignment) => assignment.course === courseId
-	);
-	const dispatch = useDispatch();
-	const newDefaultAssignment = {
+	const newAssignment = ({
 		title: "New Assignment",
 		description: "New Assignment Description",
-		dueDate: "",
-		points: "",
-		course: courseId,
+		points: 100,
+		dueDate: "2023-12-12",
+		availableFromDate: "",
+		availableUntilDate: "",
+		_id: "",
+	});
+	const [selectedAssignment, setSelectedAssignment] =
+		React.useState(newAssignment);
+
+	const handleDeleteAssignment = (assignmentId) => {
+		client.deleteAssignment(assignmentId).then((status) => {
+			dispatch(deleteAssignment(assignmentId));
+		});
 	};
-	const [selectedAssignment, setSelectedAssignment] = React.useState(
-		courseAssignments[0]
-	);
 
 	return (
 		<>
@@ -61,13 +75,13 @@ function Assignments() {
 					>
 						<FaEllipsisVertical />
 					</button>
-					<Link to={`/Kanbas/Courses/${courseId}/Assignments/create`}>
+					<Link to={`/Kanbas/Courses/${courseId}/Assignments/Create`}>
 						<button
 							type="button"
 							className="btn btn-sm btn-danger mx-1 float-end text-white bg-danger"
 							onClick={() => {
 								dispatch(
-									selectAssignment(newDefaultAssignment)
+									selectAssignment({ ...newAssignment })
 								);
 							}}
 						>
@@ -201,10 +215,8 @@ function Assignments() {
 															className="btn btn-primary"
 															data-bs-dismiss="modal"
 															onClick={() =>
-																dispatch(
-																	deleteAssignment(
-																		selectedAssignment._id
-																	)
+																handleDeleteAssignment(
+																	selectedAssignment._id
 																)
 															}
 														>

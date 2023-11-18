@@ -9,8 +9,11 @@ import {
 	updateAssignment,
 	selectAssignment,
 } from "../assignmentsReducer";
+import * as client from "../client";
 
 function AssignmentEditor() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { courseId } = useParams();
 
 	const assignments = useSelector(
@@ -20,8 +23,17 @@ function AssignmentEditor() {
 		(state) => state.assignmentsReducer.assignment
 	);
 
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	const handleAddAssignment = () => {
+		client.createAssignment(courseId, assignment).then((assignment) => {
+			dispatch(addAssignment(assignment));
+		});
+	};
+
+	const handleUpdateAssignment = () => {
+		client.updateAssignment(assignment).then((assignment) => {
+			dispatch(updateAssignment(assignment));
+		});
+	};
 
 	return (
 		<>
@@ -346,10 +358,10 @@ function AssignmentEditor() {
 						<button
 							onClick={() => {
 								if (assignments.find((a) => a._id === assignment._id)) {
-									dispatch(updateAssignment(assignment));
+									handleUpdateAssignment();
 								}
 								else {
-									dispatch(addAssignment(assignment));
+									handleAddAssignment();
 								}
 								navigate(
 									`/Kanbas/Courses/${courseId}/Assignments`
