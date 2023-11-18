@@ -5,7 +5,7 @@ const initialState = {
 	assignment: {
 		title: "New Assignment",
 		description: "New Assignment Description",
-        points: 100,
+		points: 100,
 		dueDate: "2023-12-12",
 		availableFromDate: "",
 		availableUntilDate: "",
@@ -16,35 +16,37 @@ const assignmentsSlice = createSlice({
 	name: "assignments",
 	initialState,
 	reducers: {
-        setAssignments: (state, action) => {
-            state.assignments = action.payload;
-        },
-		addAssignment: (state, action) => {
-			state.assignments = [
-				{ ...action.payload, _id: "A" + new Date().getTime().toString() },
-				...state.assignments,
-			];
+		setAssignments: (state, action) => {
+			state.assignments = action.payload;
 		},
-        deleteAssignment: (state, action) => {
-            state.assignments = state.assignments.filter(
-                (assignment) => assignment._id !== action.payload
-            );
-        },
-        updateAssignment: (state, action) => {
-            state.assignments = state.assignments.map((assignment) => {
-                if (assignment._id === action.payload._id) {
-                    return action.payload;
-                }
-                else {
-                    return assignment;
-                }
-            }) 
-        },
-        selectAssignment: (state, action) => {
-            state.assignment = action.payload;
-        }
+		addAssignment: (state, action) => {
+			state.assignments = [action.payload, ...state.assignments];
+		},
+		deleteAssignment: (state, action) => {
+			state.assignments = state.assignments.filter(
+				(assignment) => assignment._id !== action.payload
+			);
+		},
+		updateAssignment: (state, action) => {
+			state.assignments = state.assignments.map((assignment) => {
+				if (assignment._id === action.payload._id) {
+					return action.payload;
+				} else {
+					return assignment;
+				}
+			});
+		},
+		selectAssignment: (state, action) => {
+			state.assignment = action.payload;
+		},
 	},
 });
 
-export const { addAssignment, deleteAssignment, updateAssignment, selectAssignment, setAssignments } = assignmentsSlice.actions;
+export const {
+	addAssignment,
+	deleteAssignment,
+	updateAssignment,
+	selectAssignment,
+	setAssignments,
+} = assignmentsSlice.actions;
 export default assignmentsSlice.reducer;
