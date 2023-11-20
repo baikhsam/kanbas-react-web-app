@@ -29,6 +29,7 @@ function Assignments() {
 			dispatch(setAssignments(assignments));
 		});
 	}, [courseId, dispatch]);
+
 	const courseAssignments = useSelector(
 		(state) => state.assignmentsReducer.assignments
 	);

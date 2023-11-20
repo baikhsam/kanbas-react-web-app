@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import "./index.css";
@@ -8,6 +8,7 @@ import {
 	addAssignment,
 	updateAssignment,
 	selectAssignment,
+	setAssignments,
 } from "../assignmentsReducer";
 import * as client from "../client";
 
@@ -15,6 +16,11 @@ function AssignmentEditor() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { courseId } = useParams();
+	useEffect(() => {
+		client.findAssignmentsForCourse(courseId).then((assignments) => {
+			dispatch(setAssignments(assignments));
+		});
+	}, [courseId, dispatch]);
 
 	const assignments = useSelector(
 		(state) => state.assignmentsReducer.assignments
