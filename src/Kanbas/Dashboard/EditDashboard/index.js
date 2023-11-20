@@ -16,6 +16,14 @@ function EditDashboard() {
 	useEffect(() => {
 		client.findAllCourses().then((courses) => {
 			dispatch(setCourses(courses));
+			dispatch(
+				setCourse({
+					name: "New Course",
+					number: "New Course Number",
+					startDate: "2023-09-10",
+					endDate: "2023-12-15",
+				})
+			);
 		});
 	}, [dispatch]);
 	const { courses } = useSelector((state) => state.coursesReducer);
