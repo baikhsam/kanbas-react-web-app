@@ -10,6 +10,7 @@ const initialState = {
 		availableFromDate: "",
 		availableUntilDate: "",
 	},
+    lastUpdated: Date.now(),
 };
 
 const assignmentsSlice = createSlice({

@@ -24,11 +24,12 @@ import * as client from "./client";
 function Assignments() {
 	const { courseId } = useParams();
 	const dispatch = useDispatch();
+	const lastUpdated = useSelector((state) => state.assignmentsReducer.lastUpdated);
 	useEffect(() => {
 		client.findAssignmentsForCourse(courseId).then((assignments) => {
 			dispatch(setAssignments(assignments));
 		});
-	}, [courseId, dispatch]);
+	}, [courseId, dispatch, lastUpdated]);
 
 	const courseAssignments = useSelector(
 		(state) => state.assignmentsReducer.assignments
