@@ -9,6 +9,7 @@ import {
 	updateAssignment,
 	selectAssignment,
 	setAssignments,
+	setLastUpdated,
 } from "../assignmentsReducer";
 import * as client from "../client";
 
@@ -38,6 +39,7 @@ function AssignmentEditor() {
 	const handleUpdateAssignment = () => {
 		client.updateAssignment(assignment).then((assignment) => {
 			dispatch(updateAssignment(assignment));
+			dispatch(setLastUpdated(Date.now()));
 		});
 	};
 
@@ -363,10 +365,13 @@ function AssignmentEditor() {
 						</label>
 						<button
 							onClick={() => {
-								if (assignments.find((a) => a._id === assignment._id)) {
+								if (
+									assignments.find(
+										(a) => a._id === assignment._id
+									)
+								) {
 									handleUpdateAssignment();
-								}
-								else {
+								} else {
 									handleAddAssignment();
 								}
 								navigate(

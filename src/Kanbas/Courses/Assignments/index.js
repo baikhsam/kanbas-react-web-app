@@ -30,6 +30,7 @@ function Assignments() {
 			dispatch(setAssignments(assignments));
 		});
 	}, [courseId, dispatch, lastUpdated]);
+	console.log(lastUpdated);
 
 	const courseAssignments = useSelector(
 		(state) => state.assignmentsReducer.assignments
