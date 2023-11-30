@@ -3,12 +3,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Courses from "./Courses";
 import EditDashboard from "./Dashboard/EditDashboard";
-import { Provider} from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store";
 import EditModules from "./Courses/Modules/EditModules";
 
 function Kanbas() {
-
 	return (
 		<Provider store={store}>
 			<div className="d-flex">
