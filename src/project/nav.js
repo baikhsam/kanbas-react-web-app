@@ -10,6 +10,12 @@ function Nav() {
 				SignIn
 			</Link>
 			<Link
+				to="/project/signup"
+				className="list-group-item list-group-item-action"
+			>
+				SignUp
+			</Link>
+			<Link
 				to="/project/admin/users"
 				className="list-group-item list-group-item-action"
 			>

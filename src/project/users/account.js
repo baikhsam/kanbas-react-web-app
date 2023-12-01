@@ -1,18 +1,34 @@
 import * as client from "./client";
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 function Account() {
+	const { id } = useParams();
 	const [account, setAccount] = useState(null);
+	const findUserById = async (id) => {
+		const user = await client.findUserById(id);
+		setAccount(user);
+	};
 	const navigate = useNavigate();
 	const fetchAccount = async () => {
 		const account = await client.account();
 		setAccount(account);
 	};
 	useEffect(() => {
-		fetchAccount();
+		if (id) {
+			findUserById(id);
+		} else {
+			fetchAccount();
+		}
 	}, []);
 	const save = async () => {
 		await client.updateUser(account);
+	};
+	const formatDate = (date) => {
+		return date.toString().split("T")[0];
+	};
+	const signout = async () => {
+		await client.signout();
+		navigate("/project/signin");
 	};
 	return (
 		<div className="w-50">
@@ -21,6 +37,7 @@ function Account() {
 				<div>
 					<input
 						className="form-control w-50 my-2"
+						placeholder="Password"
 						value={account.password}
 						onChange={(e) =>
 							setAccount({ ...account, password: e.target.value })
@@ -28,6 +45,7 @@ function Account() {
 					/>
 					<input
 						className="form-control w-50 my-2"
+						placeholder="First Name"
 						value={account.firstName}
 						onChange={(e) =>
 							setAccount({
@@ -38,6 +56,7 @@ function Account() {
 					/>
 					<input
 						className="form-control w-50 my-2"
+						placeholder="Last Name"
 						value={account.lastName}
 						onChange={(e) =>
 							setAccount({ ...account, lastName: e.target.value })
@@ -46,13 +65,14 @@ function Account() {
 					<input
 						className="form-control w-50 my-2"
 						type="date"
-						value={account.dob}
+						value={account.dob ? formatDate(account.dob) : ""}
 						onChange={(e) =>
 							setAccount({ ...account, dob: e.target.value })
 						}
 					/>
 					<input
 						className="form-control w-50 my-2"
+						placeholder="Email"
 						value={account.email}
 						onChange={(e) =>
 							setAccount({ ...account, email: e.target.value })
@@ -73,11 +93,16 @@ function Account() {
 					<button className="btn btn-primary w-50" onClick={save}>
 						Save
 					</button>
-					<Link
-						to="/project/admin/users"
-						className="btn btn-warning w-50"
-					>
-						Users
+					<br></br>
+					<button className="btn btn-danger w-50" onClick={signout}>
+						Signout
+					</button>
+				</div>
+			)}
+			{!account && (
+				<div>
+					<Link to="/project/signin">
+						<button className="btn btn-primary w-25">Signin</button>
 					</Link>
 				</div>
 			)}
