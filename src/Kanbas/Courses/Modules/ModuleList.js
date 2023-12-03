@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect} from "react";
 import { useParams } from "react-router-dom";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
-import db from "../../Database";
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setModules } from "./modulesReducer";
+import { findModulesForCourse } from "./client";
 
 function ModuleList() {
+	const dispatch = useDispatch();
 	const { courseId } = useParams();
-	const modules = db.modules;
+	useEffect(() => {
+		findModulesForCourse(courseId).then((modules) => {
+			dispatch(setModules(modules));
+		});
+	}, [courseId, dispatch]);
+	const modules = useSelector((state) => state.modulesReducer.modules);
 	return (
 		<>
 			{modules
 				.filter((module) => module.course === courseId)
 				.map((module, index) => (
-					<div className="accordion">
-						<div key={index} className="accordion-item mb-5">
+					<div className="accordion" key={index}>
+						<div className="accordion-item mb-5">
 							<h2 className="accordion-header">
 								<button
 									className="accordion-button"

@@ -1,5 +1,10 @@
+.wd-dashboard-container {
+	width: 100%;
+}
+
 .wd-dashboard-header {
 	margin-left: 10px;
+	width: 100%;
 }
 
 .wd-dashboard-content {
@@ -60,3 +65,5 @@
 		width: 100%;
 	}
 }
+
+/* Edit Dashboard */

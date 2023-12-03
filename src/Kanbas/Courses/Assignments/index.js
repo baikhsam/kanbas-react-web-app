@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import db from "../../Database";
+
 import {
 	FaEllipsisVertical,
 	FaCircleCheck,
@@ -8,17 +8,51 @@ import {
 	FaPenToSquare,
 	FaPlus,
 	FaMagnifyingGlass,
-	FaChevronDown
+	FaChevronDown,
+	FaDeleteLeft,
 } from "react-icons/fa6";
 import { GoTriangleDown } from "react-icons/go";
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	deleteAssignment,
+	selectAssignment,
+	setAssignments,
+} from "./assignmentsReducer";
+import * as client from "./client";
 
 function Assignments() {
 	const { courseId } = useParams();
-	const assignments = db.assignments;
-	const courseAssignments = assignments.filter(
-		(assignment) => assignment.course === courseId
+	const dispatch = useDispatch();
+	const lastUpdated = useSelector((state) => state.assignmentsReducer.lastUpdated);
+	useEffect(() => {
+		client.findAssignmentsForCourse(courseId).then((assignments) => {
+			dispatch(setAssignments(assignments));
+		});
+	}, [courseId, dispatch, lastUpdated]);
+	console.log(lastUpdated);
+
+	const courseAssignments = useSelector(
+		(state) => state.assignmentsReducer.assignments
 	);
+	const newAssignment = ({
+		title: "New Assignment",
+		description: "New Assignment Description",
+		points: 100,
+		dueDate: "2023-12-12",
+		availableFromDate: "",
+		availableUntilDate: "",
+		_id: "",
+	});
+	const [selectedAssignment, setSelectedAssignment] =
+		React.useState(newAssignment);
+
+	const handleDeleteAssignment = (assignmentId) => {
+		client.deleteAssignment(assignmentId).then((status) => {
+			dispatch(deleteAssignment(assignmentId));
+		});
+	};
+
 	return (
 		<>
 			<div className="wd-assignments mx-5 d-flex flex-column">
@@ -44,12 +78,19 @@ function Assignments() {
 					>
 						<FaEllipsisVertical />
 					</button>
-					<button
-						type="button"
-						className="btn btn-sm btn-danger mx-1 float-end text-white bg-danger"
-					>
-						+ Assignment
-					</button>
+					<Link to={`/Kanbas/Courses/${courseId}/Assignments/Create`}>
+						<button
+							type="button"
+							className="btn btn-sm btn-danger mx-1 float-end text-white bg-danger"
+							onClick={() => {
+								dispatch(
+									selectAssignment({ ...newAssignment })
+								);
+							}}
+						>
+							+ Assignment
+						</button>
+					</Link>
 					<button
 						type="button"
 						className="btn btn-sm btn-secondary mx-1 float-end"
@@ -84,37 +125,110 @@ function Assignments() {
 							className="border-start border-success border-4 collapse show"
 							id="assignments-list"
 						>
-							{courseAssignments.map((assignment) => (
-								<li className="list-group-item d-flex flex-row">
+							{courseAssignments.map((assignment, index) => (
+								<li
+									className="list-group-item d-flex flex-row"
+									key={index}
+								>
 									<div className="d-inline-flex align-items-center">
 										<FaGripVertical className="float-start mx-2" />
 										<FaPenToSquare className="float-start mx-2" />
 									</div>
 									<div className="d-flex flex-column mx-3">
 										<Link
-											key={assignment._id}
 											to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-											classNameName="list-group-item"
+											onClick={(e) => {
+												dispatch(
+													selectAssignment(assignment)
+												);
+											}}
 										>
 											<h5 className="mb-1">
 												{assignment.title}
 											</h5>
 										</Link>
 										<small>
-											Week 0 - SETUP - Week starting on
-											Monday September 5th Module
-										</small>
-										<small>
-											Due Sept 18, 2022 at 11:59pm | 100
-											pts
+											<span className="text-danger">
+												Multiple Modules
+											</span>
+											{` | Due ${assignment.dueDate} | ${assignment.points} pts`}
 										</small>
 									</div>
-									<div className="wd-right-icons d-inline-flex align-items-center">
+									<div
+										className="wd-right-icons d-inline-flex align-items-center"
+										key={index}
+									>
 										<FaCircleCheck
 											className="float-end mx-1 my-1"
 											color="green"
 										/>
 										<FaEllipsisVertical className="float-end mx-1 my-1" />
+										<FaDeleteLeft
+											className="float-end mx-1 my-1"
+											color="red"
+											data-bs-toggle="modal"
+											data-bs-target="#deleteModal"
+											onClick={(e) => {
+												setSelectedAssignment({
+													...assignment,
+												});
+											}}
+										/>
+										<div
+											className="modal fade"
+											id="deleteModal"
+											tabindex="-1"
+											aria-labelledby="deleteModalLabel"
+											aria-hidden="true"
+										>
+											<div className="modal-dialog">
+												<div className="modal-content">
+													<div className="modal-header">
+														<h1
+															className="modal-title fs-5"
+															id="deleteModalLabel"
+														>
+															Delete{" "}
+															{
+																selectedAssignment.title
+															}
+															?
+														</h1>
+														<button
+															type="button"
+															className="btn-close"
+															data-bs-dismiss="modal"
+															aria-label="Close"
+														></button>
+													</div>
+													<div className="modal-body">
+														Are you sure you want to
+														delete this assignment?
+													</div>
+													<div className="modal-footer">
+														<button
+															type="button"
+															className="btn btn-secondary"
+															data-bs-dismiss="modal"
+														>
+															No
+														</button>
+														<button
+															type="button"
+															className="btn btn-primary"
+															data-bs-dismiss="modal"
+															onClick={() =>
+																handleDeleteAssignment(
+																	selectedAssignment._id
+																)
+															}
+														>
+															Yes
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</li>
 							))}
